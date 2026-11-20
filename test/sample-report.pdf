@@ -1,0 +1,32 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 5 0 R >> >> /Contents 4 0 R >>
+endobj
+4 0 obj
+<< /Length 799 >>
+stream
+BT /F1 11 Tf 50 780 Td 14 TL (Sample Diagnostics Lab, Jayanagar, Bengaluru) Tj T* (Patient: Test Patient   Age/Sex: 58/F   Date: 12-Nov-2026) Tj T* () Tj T* (Test                      Result     Unit      Reference Range) Tj T* (Fasting Blood Sugar       132        mg/dL     70 - 100) Tj T* (HbA1c                     7.4        %         4.0 - 5.6) Tj T* (Total Cholesterol         212        mg/dL     < 200) Tj T* (LDL Cholesterol           138        mg/dL     < 100) Tj T* (HDL Cholesterol           46         mg/dL     > 40) Tj T* (Triglycerides             160        mg/dL     < 150) Tj T* (Serum Creatinine          0.9        mg/dL     0.6 - 1.1) Tj T* (Haemoglobin               11.2       g/dL      12.0 - 15.5) Tj T* (TSH                       2.8        uIU/mL    0.4 - 4.0) Tj T* ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier >>
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000241 00000 n 
+0000001091 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+1159
+%%EOF

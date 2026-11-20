@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kshema</title>
+  <meta name="description" content="Track medicines, readings and doctor visits, and ask health questions in Kannada, Hindi or English.">
+  <meta name="theme-color" content="#1F5E45">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anek+Latin:wdth,wght@75..125,400..700&family=Anek+Kannada:wdth,wght@75..125,400..700&family=Anek+Devanagari:wdth,wght@75..125,400..700&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="top">
+    <a class="brand" href="#today" aria-label="Kshema home">
+      <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true"><use href="icon.svg#mark"/></svg>
+      <span id="brand-name">Kshema</span>
+    </a>
+    <div class="top-actions">
+      <label class="lang-pick">
+        <span class="sr-only" data-t="language">Language</span>
+        <select id="lang">
+          <option value="en">English</option>
+          <option value="kn">ಕನ್ನಡ</option>
+          <option value="hi">हिन्दी</option>
+        </select>
+      </label>
+      <button type="button" class="sos" data-action="sos"></button>
+      <a class="me-link icon-btn" href="#me"></a>
+    </div>
+  </header>
+
+  <nav class="tabs" aria-label="Sections" id="tabs"></nav>
+
+  <main id="main" tabindex="-1"></main>
+
+  <dialog id="sheet" aria-labelledby="sheet-title"></dialog>
+  <dialog id="emergency" class="emergency" aria-labelledby="em-title"></dialog>
+  <div id="toast" role="status" aria-live="polite"></div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
