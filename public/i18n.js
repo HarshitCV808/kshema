@@ -3,6 +3,10 @@ export const LOCALES = { en: "en-IN", kn: "kn-IN", hi: "hi-IN" };
 
 export const STRINGS = {
   en: {
+    appearance: "Appearance",
+    themeSystem: "Same as device",
+    themeLight: "Light",
+    themeDark: "Dark",
     demoNotice: "Online demo: answers come from Google Gemini's free tier, and Google may use what you send to improve its products. Use made-up details, not real health information.",
     sampleReports: "Download sample reports",
     asNeeded: "Only when needed (SOS)",
@@ -178,6 +182,10 @@ export const STRINGS = {
     required: "Fill in this field",
   },
   kn: {
+    appearance: "ಬಣ್ಣದ ಶೈಲಿ",
+    themeSystem: "ಸಾಧನದಂತೆ",
+    themeLight: "ತಿಳಿ",
+    themeDark: "ಗಾಢ",
     demoNotice: "ಆನ್‌ಲೈನ್ ಡೆಮೊ: ಉತ್ತರಗಳು Google Gemini ಉಚಿತ ಸೇವೆಯಿಂದ ಬರುತ್ತವೆ, ನೀವು ಕಳುಹಿಸುವುದನ್ನು Google ತನ್ನ ಉತ್ಪನ್ನಗಳನ್ನು ಸುಧಾರಿಸಲು ಬಳಸಬಹುದು. ನಿಜವಾದ ಆರೋಗ್ಯ ಮಾಹಿತಿ ಬೇಡ, ಕಾಲ್ಪನಿಕ ವಿವರಗಳನ್ನು ಬಳಸಿ.",
     sampleReports: "ಮಾದರಿ ವರದಿಗಳನ್ನು ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ",
     asNeeded: "ಅಗತ್ಯವಿದ್ದಾಗ ಮಾತ್ರ (SOS)",
@@ -353,6 +361,10 @@ export const STRINGS = {
     required: "ಈ ಭಾಗವನ್ನು ತುಂಬಿರಿ",
   },
   hi: {
+    appearance: "रंग-रूप",
+    themeSystem: "डिवाइस जैसा",
+    themeLight: "हल्का",
+    themeDark: "गहरा",
     demoNotice: "ऑनलाइन डेमो: जवाब Google Gemini की मुफ़्त सेवा से आते हैं, और Google आपकी भेजी जानकारी अपने प्रोडक्ट सुधारने में इस्तेमाल कर सकता है। असली स्वास्थ्य जानकारी नहीं, बनावटी विवरण इस्तेमाल करें।",
     sampleReports: "सैंपल रिपोर्ट डाउनलोड करें",
     asNeeded: "ज़रूरत पड़ने पर ही (SOS)",

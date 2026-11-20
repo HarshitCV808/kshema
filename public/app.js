@@ -14,7 +14,7 @@ const REPORT_TYPES = ["application/pdf", "image/jpeg", "image/png", "image/webp"
 const blank = () => ({
   profile: { name: "", age: "", sex: "", conditions: "", allergies: "" },
   meds: [], taken: {}, vitals: [], appts: [], reports: [], chat: [], notified: {},
-  settings: { lang: "en", consent: false, slotTimes: { morning: "08:00", afternoon: "14:00", night: "21:00" } },
+  settings: { lang: "en", theme: "system", consent: false, slotTimes: { morning: "08:00", afternoon: "14:00", night: "21:00" } },
 });
 
 // Fill in anything missing from saved (or restored) data so older versions still load.
@@ -421,6 +421,10 @@ function viewMe() {
     </div></fieldset>
     <button class="btn">${esc(t("save"))}</button>
   </form>
+  <section class="panel"><fieldset><legend>${esc(t("appearance"))}</legend>
+    <div class="day-picks">${[["system", t("themeSystem")], ["light", t("themeLight")], ["dark", t("themeDark")]]
+      .map(([v, label]) => `<label class="day-pick"><input type="radio" name="theme" value="${v}"${(s.theme || "system") === v ? " checked" : ""}>
+        <span>${esc(label)}</span></label>`).join("")}</div></fieldset></section>
   ${reminderCard()}
   <section class="panel"><h2>${esc(t("yourData"))}</h2><p class="quiet">${esc(t("privacy"))}</p>
     <div class="btn-row">
@@ -432,6 +436,7 @@ function viewMe() {
 
 function render() {
   document.documentElement.lang = state.settings.lang;
+  applyTheme();
   $(".skip").textContent = t("skip");
   $("#brand-name").textContent = t("brand");
   $("#lang").value = state.settings.lang;
@@ -445,6 +450,13 @@ function render() {
     `<a href="#${id}"${id === view ? ' aria-current="page"' : ""}>${icon(ic, 22)}<span>${esc(t(label))}</span></a>`).join("");
   $("#main").innerHTML = VIEWS[view]();
   if (view === "ask") scrollChat();
+}
+
+// "system" follows the device; "light" or "dark" overrides it (styles.css reads data-theme).
+function applyTheme() {
+  const theme = state.settings.theme;
+  if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+  else delete document.documentElement.dataset.theme;
 }
 
 function route(focus = true) {
@@ -938,6 +950,10 @@ document.addEventListener("change", (e) => {
     el.form.end.min = el.value; // last day can't be before the first
   } else if (el.dataset.action === "vital-type") {
     $("#sheet .vital-fields").innerHTML = vitalFields(el.value);
+  } else if (el.name === "theme") {
+    state.settings.theme = el.value;
+    save();
+    applyTheme();
   } else if (el.id === "import-file") {
     restore(el.files[0]);
   } else if (el.name === "sys" || el.name === "dia") {

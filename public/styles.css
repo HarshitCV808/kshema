@@ -3,63 +3,41 @@
    pack you press to mark a dose taken. */
 
 :root {
-  --paper: #f7f7f2;
-  --surface: #ffffff;
-  --surface-2: #eef1ec;
-  --ink: #1b2420;
-  --ink-2: #4f5b55;
-  --line: #dfe4de;
-  --line-strong: #8a958e; /* 3:1 against white: input borders and dividers that carry meaning */
-  --primary: #1f5e45;
-  --primary-soft: #e4f0e8;
-  --on-primary: #ffffff;
-  --neem: #24684a;
-  --neem-soft: #e2f1e9;
-  --attention: #8a5a0b; /* turmeric, darkened for 4.5:1 text contrast */
-  --attention-soft: #fcefd2;
-  --alert: #b42318;
-  --alert-soft: #fde8e6;
-  --sky: #1d5f86;
-  --sky-soft: #e1eff7;
-  --foil-1: #e8ebe7;
-  --foil-2: #d6dcd5;
-  --dome: #ffffff;
-  --ring: #1f5e45;
-  --shadow: 0 1px 2px rgb(27 36 32 / 0.06), 0 8px 24px -12px rgb(27 36 32 / 0.2);
+  /* Each colour is light-dark(light value, dark value); the browser picks one from color-scheme,
+     which follows the device unless the profile page's Appearance switch sets data-theme. */
+  color-scheme: light dark;
+  --paper: light-dark(#f7f7f2, #121815);
+  --surface: light-dark(#ffffff, #1a221e);
+  --surface-2: light-dark(#eef1ec, #222c27);
+  --ink: light-dark(#1b2420, #e9efeb);
+  --ink-2: light-dark(#4f5b55, #a6b3ac);
+  --line: light-dark(#dfe4de, #2a3530);
+  --line-strong: light-dark(#8a958e, #66766d);
+  --primary: light-dark(#1f5e45, #7fcfa6);
+  --primary-soft: light-dark(#e4f0e8, #1c3328);
+  --on-primary: light-dark(#ffffff, #0e1a14);
+  --neem: light-dark(#24684a, #8fd9b2);
+  --neem-soft: light-dark(#e2f1e9, #173023);
+  --attention: light-dark(#8a5a0b, #f0b85a);
+  --attention-soft: light-dark(#fcefd2, #33270f);
+  --alert: light-dark(#b42318, #ff8a80);
+  --alert-soft: light-dark(#fde8e6, #3b1715);
+  --sky: light-dark(#1d5f86, #8cc8ec);
+  --sky-soft: light-dark(#e1eff7, #142a38);
+  --foil-1: light-dark(#e8ebe7, #26302b);
+  --foil-2: light-dark(#d6dcd5, #1e2622);
+  --dome: light-dark(#ffffff, #33403a);
+  --ring: light-dark(#1f5e45, #7fcfa6);
   --radius: 14px;
   --nav-h: 64px;
   --font: "Anek Latin", "Anek Kannada", "Anek Devanagari", system-ui, sans-serif;
-  color-scheme: light;
+  --on-alert: light-dark(#ffffff, #2a0a08);
+  --shadow-soft: light-dark(rgb(27 36 32 / 0.06), rgb(0 0 0 / 0.3));
+  --shadow-deep: light-dark(rgb(27 36 32 / 0.2), rgb(0 0 0 / 0.6));
+  --shadow: 0 1px 2px var(--shadow-soft), 0 8px 24px -12px var(--shadow-deep);
 }
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --paper: #121815;
-    --surface: #1a221e;
-    --surface-2: #222c27;
-    --ink: #e9efeb;
-    --ink-2: #a6b3ac;
-    --line: #2a3530;
-    --line-strong: #66766d;
-    --primary: #7fcfa6;
-    --primary-soft: #1c3328;
-    --on-primary: #0e1a14;
-    --neem: #8fd9b2;
-    --neem-soft: #173023;
-    --attention: #f0b85a;
-    --attention-soft: #33270f;
-    --alert: #ff8a80;
-    --alert-soft: #3b1715;
-    --sky: #8cc8ec;
-    --sky-soft: #142a38;
-    --foil-1: #26302b;
-    --foil-2: #1e2622;
-    --dome: #33403a;
-    --ring: #7fcfa6;
-    --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px -12px rgb(0 0 0 / 0.6);
-    color-scheme: dark;
-  }
-}
+:root[data-theme="light"] { color-scheme: light; }
+:root[data-theme="dark"] { color-scheme: dark; }
 
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
@@ -111,9 +89,8 @@ button:disabled { cursor: not-allowed; opacity: 0.55; }
 }
 .sos {
   display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 14px;
-  background: var(--alert); color: #fff; border: 0; border-radius: 999px; font-weight: 600;
+  background: var(--alert); color: var(--on-alert); border: 0; border-radius: 999px; font-weight: 600;
 }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .sos { color: #2a0a08; } }
 
 .icon-btn {
   display: inline-grid; place-items: center; width: 44px; height: 44px; flex: none;
@@ -183,7 +160,7 @@ main {
 .btn.ghost { background: transparent; color: var(--ink); border-color: var(--line-strong); }
 .btn.ghost:hover { background: var(--surface-2); }
 .btn.small { min-height: 40px; padding: 0 14px; font-size: 0.95rem; }
-.btn.danger { background: var(--alert); color: #fff; }
+.btn.danger { background: var(--alert); color: var(--on-alert); }
 .btn-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
 .link-btn { display: inline-flex; align-items: center; gap: 6px; background: none; border: 0; padding: 8px 0; min-height: 44px; color: var(--primary); font-weight: 600; }
 
@@ -194,7 +171,7 @@ main {
 .badge.lvl-watch { background: var(--attention-soft); color: var(--attention); }
 .badge.lvl-high { background: var(--alert-soft); color: var(--alert); }
 .badge.lvl-low { background: var(--sky-soft); color: var(--sky); }
-.badge.lvl-urgent { background: var(--alert); color: #fff; }
+.badge.lvl-urgent { background: var(--alert); color: var(--on-alert); }
 
 .alert {
   display: flex; align-items: center; gap: 12px; margin-bottom: 16px; padding: 14px 16px;
@@ -455,7 +432,7 @@ dialog::backdrop { background: rgb(20 18 29 / 0.5); }
   display: flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 16px; border-radius: 12px;
   text-decoration: none; font-weight: 600; color: var(--alert); background: var(--alert-soft);
 }
-.call.primary { background: var(--alert); color: #fff; font-size: 1.1rem; }
+.call.primary { background: var(--alert); color: var(--on-alert); font-size: 1.1rem; }
 .msg.flag .call { background: var(--surface); }
 .msg.flag .call.primary { background: var(--alert); }
 
