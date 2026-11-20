@@ -11,5 +11,8 @@
   "dependencies": {
     "@anthropic-ai/sdk": "1.10.0",
     "pdfjs-dist": "6.5.438"
+  },
+  "engines": {
+    "node": ">=24.2"
   }
 }

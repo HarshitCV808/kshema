@@ -36,6 +36,7 @@ function load() {
 
 let state = load();
 let busy = false;
+let aiProvider = "local"; // claude | gemini | local, from /api/info
 
 function save() {
   try {
@@ -388,6 +389,8 @@ function viewAsk() {
   return `<div class="ask">
     <div class="page-head"><h1>${esc(t("navAsk"))}</h1>
       ${state.chat.length ? `<button class="btn ghost small" data-action="clear-chat"${busy ? " disabled" : ""}>${esc(t("clearChat"))}</button>` : ""}</div>
+    ${aiProvider === "gemini" ? `<p class="demo-note" role="note">${esc(t("demoNotice"))}
+      <a href="https://github.com/HarshitCV808/kshema/tree/main/samples" target="_blank" rel="noopener">${esc(t("sampleReports"))}</a></p>` : ""}
     ${state.reports.length ? `<details class="reports"><summary>${icon("file", 18)}${esc(t("reports", { n: state.reports.length }))}</summary>${state.reports.map(reportCard).join("")}</details>` : ""}
     <div id="chat-log" class="chat-log" aria-live="polite" aria-busy="${busy}">${intro}${state.chat.map(msgHtml).join("")}</div>
     <form id="composer" class="composer">
@@ -981,6 +984,13 @@ window.addEventListener("hashchange", () => route());
 
 prune();
 route(false);
+fetch("/api/info")
+  .then((r) => r.json())
+  .then(({ provider }) => {
+    aiProvider = provider;
+    if (view === "ask") render();
+  })
+  .catch(() => {}); // notice is optional; the page works without it
 if (!state.settings.consent) openWelcome();
 setInterval(checkReminders, 30_000);
 checkReminders();

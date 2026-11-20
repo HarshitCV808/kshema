@@ -3,6 +3,8 @@ export const LOCALES = { en: "en-IN", kn: "kn-IN", hi: "hi-IN" };
 
 export const STRINGS = {
   en: {
+    demoNotice: "Online demo: answers come from Google Gemini's free tier, and Google may use what you send to improve its products. Use made-up details, not real health information.",
+    sampleReports: "Download sample reports",
     asNeeded: "Only when needed (SOS)",
     bpOrder: "The upper number must be higher than the lower number.",
     reportFor: "For {name}",
@@ -139,7 +141,7 @@ export const STRINGS = {
     call108: "108, ambulance",
     call14416: "14416, Tele-MANAS mental health support (24x7)",
     close: "Close",
-    errNoKey: "The Anthropic API key in .env isn't working. Check it, or remove it to use the free local AI.",
+    errNoKey: "The AI key set on the server isn't working. Check it in .env (or Render's settings), or remove it to use the free local AI.",
     errNoLocalAi: "The free local AI isn't running. Open the Ollama app on this computer and try again.",
     errNoModel: "The local AI model isn't downloaded yet. Run: ollama pull gemma4:12b",
     errScannedPdf: "This PDF is a scanned image. Upload a clear photo of the report instead.",
@@ -176,6 +178,8 @@ export const STRINGS = {
     required: "Fill in this field",
   },
   kn: {
+    demoNotice: "ಆನ್‌ಲೈನ್ ಡೆಮೊ: ಉತ್ತರಗಳು Google Gemini ಉಚಿತ ಸೇವೆಯಿಂದ ಬರುತ್ತವೆ, ನೀವು ಕಳುಹಿಸುವುದನ್ನು Google ತನ್ನ ಉತ್ಪನ್ನಗಳನ್ನು ಸುಧಾರಿಸಲು ಬಳಸಬಹುದು. ನಿಜವಾದ ಆರೋಗ್ಯ ಮಾಹಿತಿ ಬೇಡ, ಕಾಲ್ಪನಿಕ ವಿವರಗಳನ್ನು ಬಳಸಿ.",
+    sampleReports: "ಮಾದರಿ ವರದಿಗಳನ್ನು ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ",
     asNeeded: "ಅಗತ್ಯವಿದ್ದಾಗ ಮಾತ್ರ (SOS)",
     bpOrder: "ಮೇಲಿನ ಸಂಖ್ಯೆ ಕೆಳಗಿನ ಸಂಖ್ಯೆಗಿಂತ ಹೆಚ್ಚಿರಬೇಕು.",
     reportFor: "{name} ಅವರಿಗೆ",
@@ -312,7 +316,7 @@ export const STRINGS = {
     call108: "108, ಆಂಬುಲೆನ್ಸ್",
     call14416: "14416, ಟೆಲಿ-ಮನಸ್ ಮಾನಸಿಕ ಆರೋಗ್ಯ ಸಹಾಯ (24x7)",
     close: "ಮುಚ್ಚಿ",
-    errNoKey: ".env ಫೈಲ್‌ನಲ್ಲಿರುವ Anthropic API ಕೀ ಕೆಲಸ ಮಾಡುತ್ತಿಲ್ಲ. ಅದನ್ನು ಪರಿಶೀಲಿಸಿ, ಅಥವಾ ಉಚಿತ ಸ್ಥಳೀಯ AI ಬಳಸಲು ತೆಗೆದುಹಾಕಿ.",
+    errNoKey: "ಸರ್ವರ್‌ನಲ್ಲಿ ಹೊಂದಿಸಿದ AI ಕೀ ಕೆಲಸ ಮಾಡುತ್ತಿಲ್ಲ. ಅದನ್ನು .env (ಅಥವಾ Render ಸೆಟ್ಟಿಂಗ್ಸ್) ನಲ್ಲಿ ಪರಿಶೀಲಿಸಿ, ಅಥವಾ ಉಚಿತ ಸ್ಥಳೀಯ AI ಬಳಸಲು ತೆಗೆದುಹಾಕಿ.",
     errNoLocalAi: "ಉಚಿತ ಸ್ಥಳೀಯ AI ಚಾಲನೆಯಲ್ಲಿಲ್ಲ. ಈ ಕಂಪ್ಯೂಟರ್‌ನಲ್ಲಿ Ollama ಆ್ಯಪ್ ತೆರೆದು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
     errNoModel: "ಸ್ಥಳೀಯ AI ಮಾದರಿ ಇನ್ನೂ ಡೌನ್‌ಲೋಡ್ ಆಗಿಲ್ಲ. ಇದನ್ನು ಚಲಾಯಿಸಿ: ollama pull gemma4:12b",
     errScannedPdf: "ಈ PDF ಸ್ಕ್ಯಾನ್ ಮಾಡಿದ ಚಿತ್ರ. ಬದಲಿಗೆ ವರದಿಯ ಸ್ಪಷ್ಟ ಫೋಟೋ ಅಪ್‌ಲೋಡ್ ಮಾಡಿ.",
@@ -349,6 +353,8 @@ export const STRINGS = {
     required: "ಈ ಭಾಗವನ್ನು ತುಂಬಿರಿ",
   },
   hi: {
+    demoNotice: "ऑनलाइन डेमो: जवाब Google Gemini की मुफ़्त सेवा से आते हैं, और Google आपकी भेजी जानकारी अपने प्रोडक्ट सुधारने में इस्तेमाल कर सकता है। असली स्वास्थ्य जानकारी नहीं, बनावटी विवरण इस्तेमाल करें।",
+    sampleReports: "सैंपल रिपोर्ट डाउनलोड करें",
     asNeeded: "ज़रूरत पड़ने पर ही (SOS)",
     bpOrder: "ऊपर का नंबर नीचे वाले नंबर से ज़्यादा होना चाहिए।",
     reportFor: "{name} के लिए",
@@ -485,7 +491,7 @@ export const STRINGS = {
     call108: "108, एम्बुलेंस",
     call14416: "14416, टेली-मानस मानसिक स्वास्थ्य सहायता (24x7)",
     close: "बंद करें",
-    errNoKey: ".env फ़ाइल की Anthropic API key काम नहीं कर रही। इसे जांचें, या मुफ़्त लोकल AI इस्तेमाल करने के लिए हटा दें।",
+    errNoKey: "सर्वर पर लगी AI key काम नहीं कर रही। इसे .env (या Render की सेटिंग्स) में जांचें, या मुफ़्त लोकल AI के लिए हटा दें।",
     errNoLocalAi: "मुफ़्त लोकल AI चालू नहीं है। इस कंप्यूटर पर Ollama ऐप खोलें और फिर कोशिश करें।",
     errNoModel: "लोकल AI मॉडल अभी डाउनलोड नहीं हुआ है। यह चलाएं: ollama pull gemma4:12b",
     errScannedPdf: "यह PDF स्कैन की हुई तस्वीर है। इसकी जगह रिपोर्ट की साफ़ फ़ोटो लगाएं।",

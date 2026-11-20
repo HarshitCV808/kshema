@@ -490,3 +490,6 @@ dialog::backdrop { background: rgb(20 18 29 / 0.5); }
   align-self: start; padding: 6px 10px; border-radius: 10px; font-weight: 600; font-size: 0.9rem; line-height: 1.2;
   background: var(--attention-soft); color: var(--attention); max-width: 9rem;
 }
+
+.demo-note { margin-bottom: 16px; padding: 12px 14px; border-radius: var(--radius); background: var(--attention-soft); color: var(--attention); font-size: 0.95rem; }
+.demo-note a { color: inherit; font-weight: 600; }

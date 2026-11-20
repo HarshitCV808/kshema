@@ -6,6 +6,7 @@ import Anthropic from "@anthropic-ai/sdk";
 import { findRedFlags } from "./lib/redflags.js";
 import { LANGS, LEVELS, REPORT_PROMPT, REPORT_SCHEMA, SYSTEM_PROMPT } from "./lib/prompts.js";
 import { HttpError, LOCAL_MODEL, localJson, localStream, pdfText } from "./lib/local-ai.js";
+import { GEMINI_MODEL, geminiJson, geminiStream } from "./lib/gemini.js";
 
 const PUBLIC = fileURLToPath(new URL("./public/", import.meta.url));
 const PORT = Number(process.env.PORT) || 3000;
@@ -13,8 +14,10 @@ const PORT = Number(process.env.PORT) || 3000;
 // AI (or your API credit). Set HOST=0.0.0.0 to test from a phone on your network.
 const HOST = process.env.HOST || "127.0.0.1";
 const MODEL = "claude-opus-5-5";
-// With an Anthropic key the assistant uses Claude; without one it uses the free local model.
-const useClaude = Boolean(process.env.ANTHROPIC_API_KEY);
+// Which AI answers: Claude if an Anthropic key is set, else Gemini if a Gemini key is set
+// (the online demo), else the free local model through Ollama.
+const PROVIDER = process.env.ANTHROPIC_API_KEY ? "claude" : process.env.GEMINI_API_KEY ? "gemini" : "local";
+const PROVIDER_NAME = { claude: MODEL, gemini: `${GEMINI_MODEL} (Google)`, local: `${LOCAL_MODEL} via Ollama` }[PROVIDER];
 // Server-side refusal fallback: if a safety classifier declines (health topics can trip
 // one by mistake), the API re-runs the request on Anthropic's recommended fallback model.
 const FALLBACK = { betas: ["server-side-fallback-2026-07-01"], fallbacks: "default" };
@@ -120,9 +123,11 @@ async function chat(req, res) {
   const abort = new AbortController();
   res.on("close", () => abort.abort());
   try {
-    const text = useClaude
-      ? claudeStream(patient, messages, abort.signal)
-      : localStream(`${SYSTEM_PROMPT}\n\n${patient}`, messages, abort.signal);
+    const system = `${SYSTEM_PROMPT}\n\n${patient}`;
+    const text =
+      PROVIDER === "claude" ? claudeStream(patient, messages, abort.signal)
+      : PROVIDER === "gemini" ? geminiStream(system, messages, abort.signal)
+      : localStream(system, messages, abort.signal);
     for await (const t of text) send({ type: "text", text: t });
     send({ type: "done" });
   } catch (err) {
@@ -140,7 +145,10 @@ async function report(req, res) {
   const pdf = body.mediaType === "application/pdf";
   const prompt = `${REPORT_PROMPT}\nWrite title and summary in ${lang(body.lang)}.`;
 
-  if (!useClaude) {
+  if (PROVIDER === "gemini") {
+    return sendJson(res, 200, await geminiJson(prompt, { schema: REPORT_SCHEMA, file: { mimeType: body.mediaType, data: body.data } }));
+  }
+  if (PROVIDER === "local") {
     if (!pdf) return sendJson(res, 200, await localJson(prompt, { schema: REPORT_SCHEMA, images: [body.data] }));
     const text = await pdfText(body.data);
     if (text.replace(/\s/g, "").length < 40) throw new HttpError(422, "scanned_pdf");
@@ -193,8 +201,29 @@ const SECURITY_HEADERS = {
   "referrer-policy": "no-referrer",
 };
 
+// Public-demo protection: each visitor gets 20 AI requests per 10 minutes and the whole site
+// 300 per hour, so one person can't use up a free API quota.
+// shortcut: counts live in memory and reset on restart; use a shared store if there are several servers.
+const hits = new Map();
+export function allowRequest(ip, now = Date.now()) {
+  const recent = (k, ms) => (hits.get(k) ?? []).filter((t) => now - t < ms);
+  const mine = recent(ip, 600e3);
+  const all = recent("*", 3600e3);
+  if (mine.length >= 20 || all.length >= 300) return false;
+  if (hits.size > 5000) hits.clear(); // keeps memory bounded if many visitors pass through
+  hits.set(ip, [...mine, now]);
+  hits.set("*", [...all, now]);
+  return true;
+}
+
 const server = http.createServer(async (req, res) => {
   try {
+    if (req.method === "GET" && req.url === "/api/info") return sendJson(res, 200, { provider: PROVIDER });
+    if (req.method === "POST" && req.url.startsWith("/api/")) {
+      // Behind Render's proxy the visitor's address is the first x-forwarded-for entry.
+      const ip = req.headers["x-forwarded-for"]?.split(",")[0].trim() || req.socket.remoteAddress;
+      if (!allowRequest(ip)) return sendJson(res, 429, { error: "busy" });
+    }
     if (req.method === "POST" && req.url === "/api/chat") return await chat(req, res);
     if (req.method === "POST" && req.url === "/api/report") return await report(req, res);
     if (req.method === "GET") return await serveStatic(req, res);
@@ -210,5 +239,5 @@ const server = http.createServer(async (req, res) => {
 
 // Tests import this file for its helpers, so only listen when run directly.
 if (import.meta.main) server.listen(PORT, HOST, () =>
-  console.log(`Kshema running at http://${HOST === "127.0.0.1" ? "localhost" : HOST}:${PORT} (assistant: ${useClaude ? MODEL : `${LOCAL_MODEL} via Ollama`})`),
+  console.log(`Kshema running at http://${HOST === "127.0.0.1" ? "localhost" : HOST}:${PORT} (assistant: ${PROVIDER_NAME})`),
 );

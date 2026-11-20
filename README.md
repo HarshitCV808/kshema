@@ -21,6 +21,7 @@ The Ask page needs an AI. You have two options:
 
 - **Free, on this computer (the default):** install [Ollama](https://ollama.com), open it, and run `ollama pull gemma4:12b` (about 8 GB, needs 16 GB RAM). Health data never leaves the machine. Answers are weaker than Claude's, especially in Kannada, and scanned PDFs need to be uploaded as photos. Set `OLLAMA_MODEL` in `.env` to use a different model.
 - **Claude (paid, better answers):** put `ANTHROPIC_API_KEY=sk-ant-...` in `.env` (copy `.env.example`) and restart. With a key set, the server uses Claude.
+- **Google Gemini (free tier, for the online demo):** put `GEMINI_API_KEY=...` in `.env`. Google may use free-tier requests to improve its products, so the Ask page warns users to enter made-up details only. If both keys are set, Claude is used.
 
 Everything else works without either. To try report reading, upload a file from `samples/`. These are fictional reports, including a critical kidney report and a dengue report that should both prompt "contact a doctor today".
 
@@ -36,6 +37,16 @@ By default the server only answers on this computer (127.0.0.1), so nobody else 
 | Safety | `lib/redflags.js` | Fixed keyword rules in English, Kannada, Hindi and romanised Hindi/Kannada, ignoring simple English negations ("no chest pain"). They run before the AI is called, so the emergency card appears even if the AI fails. |
 | Page | `public/app.js`, `public/i18n.js` | Plain JavaScript modules with no build step. Data is stored in the browser's `localStorage` and never on the server. |
 | Health logic | `public/logic.js` | Pure functions for reading ranges, adherence, stock and reminders. Tested in `test/`. |
+
+## Put it online (Render + Gemini)
+
+`render.yaml` describes the service, so Render can set it up from this repo:
+
+1. Get a free Gemini API key at [Google AI Studio](https://aistudio.google.com/apikey).
+2. On [render.com](https://render.com), sign in with GitHub, choose **New → Blueprint**, and pick this repo.
+3. When Render asks for `GEMINI_API_KEY`, paste the key. It's stored on Render, never in the repo.
+
+Render's free plan sleeps after about 15 minutes without visitors, so the first visit after that takes up to a minute. To keep a public link from using up the free quota, each visitor gets 20 AI requests per 10 minutes and the whole site 300 per hour.
 
 ## Clinical safety design
 
@@ -60,12 +71,13 @@ Thresholds and prompts are general adult guidance. They need sign-off from a cli
 
 ## Testing
 
-`npm test` runs 13 test groups (Node's built-in test runner, no extra dependencies):
+`npm test` runs 17 test groups (Node's built-in test runner, no extra dependencies):
 - reading ranges, first-aid choice and °C conversion
 - weekly medicines, adherence, stock and reminders
 - red flags in each language, including negations and words that only look similar ("accidentally", "benefits")
 - report range checks
 - the server's cleaning of chat history, which is the trust boundary between the browser and the AI
+- the Gemini connection (against fake Gemini responses, since the real API needs a key) and the rate limit
 
 I tested the pages by hand in the browser at phone and desktop sizes, in light and dark mode, in all three languages, and with a script that checks text contrast.
 

@@ -1,0 +1,15 @@
+# Render blueprint for the online demo: https://render.com/docs/blueprint-spec
+# Render asks for GEMINI_API_KEY when you create the service; it is stored there, never in this repo.
+services:
+  - type: web
+    name: kshema
+    runtime: node
+    plan: free
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /
+    envVars:
+      - key: HOST
+        value: 0.0.0.0 # accept visitors, not only this machine
+      - key: GEMINI_API_KEY
+        sync: false
