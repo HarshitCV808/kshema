@@ -22,7 +22,7 @@ The Ask page needs an AI. You have two options:
 - **Free, on this computer (the default):** install [Ollama](https://ollama.com), open it, and run `ollama pull gemma4:12b` (about 8 GB, needs 16 GB RAM). Health data never leaves the machine. Answers are weaker than Claude's, especially in Kannada, and scanned PDFs need to be uploaded as photos. Set `OLLAMA_MODEL` in `.env` to use a different model.
 - **Claude (paid, better answers):** put `ANTHROPIC_API_KEY=sk-ant-...` in `.env` (copy `.env.example`) and restart. With a key set, the server uses Claude.
 
-Everything else works without either.
+Everything else works without either. To try report reading, upload a file from `samples/`. These are fictional reports, including a critical kidney report and a dengue report that should both prompt "contact a doctor today".
 
 By default the server only answers on this computer (127.0.0.1), so nobody else on your Wi-Fi can use your AI. To try the site on your phone, start it with `HOST=0.0.0.0 npm start` and open `http://<your-mac's-IP>:3000`.
 

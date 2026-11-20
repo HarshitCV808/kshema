@@ -1,0 +1,32 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 5 0 R >> >> /Contents 4 0 R >>
+endobj
+4 0 obj
+<< /Length 829 >>
+stream
+BT /F1 10 Tf 48 790 Td 15 TL (SAMPLE REPORT - FICTIONAL PATIENT, FOR TESTING ONLY) Tj T* () Tj T* (Namma Diagnostics, 4th Block, Jayanagar, Bengaluru 560011) Tj T* () Tj T* (Patient: Ramesh Gowda     Age/Sex: 67/M) Tj T* (Date: 18-Nov-2026     Ref. by: Dr. A. Kumar) Tj T* () Tj T* (Test                        Result    Unit       Reference Range) Tj T* (----------------------------------------------------------------) Tj T* (Serum Creatinine            3.8       mg/dL      0.7 - 1.3) Tj T* (Blood Urea                  98        mg/dL      15 - 45) Tj T* (Serum Potassium             6.4       mmol/L     3.5 - 5.1) Tj T* (Serum Sodium                128       mmol/L     135 - 145) Tj T* (Haemoglobin                 6.8       g/dL       13.0 - 17.0) Tj T* (eGFR                        15        mL/min/1.73m2> 90) Tj T* ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier >>
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000241 00000 n 
+0000001121 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+1189
+%%EOF

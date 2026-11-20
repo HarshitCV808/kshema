@@ -1,0 +1,32 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 5 0 R >> >> /Contents 4 0 R >>
+endobj
+4 0 obj
+<< /Length 946 >>
+stream
+BT /F1 10 Tf 48 790 Td 15 TL (SAMPLE REPORT - FICTIONAL PATIENT, FOR TESTING ONLY) Tj T* () Tj T* (Namma Diagnostics, 4th Block, Jayanagar, Bengaluru 560011) Tj T* () Tj T* (Patient: Lakshmi Rao     Age/Sex: 58/F) Tj T* (Date: 12-Nov-2026     Ref. by: Dr. A. Kumar) Tj T* () Tj T* (Test                        Result    Unit       Reference Range) Tj T* (----------------------------------------------------------------) Tj T* (Fasting Blood Sugar         132       mg/dL      70 - 100) Tj T* (Post Prandial Blood Sugar   214       mg/dL      70 - 140) Tj T* (HbA1c                       7.4       %          4.0 - 5.6) Tj T* (Total Cholesterol           212       mg/dL      < 200) Tj T* (LDL Cholesterol             138       mg/dL      < 100) Tj T* (HDL Cholesterol             46        mg/dL      > 40) Tj T* (Triglycerides               160       mg/dL      < 150) Tj T* (Serum Creatinine            0.9       mg/dL      0.6 - 1.1) Tj T* ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier >>
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000241 00000 n 
+0000001238 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+1306
+%%EOF

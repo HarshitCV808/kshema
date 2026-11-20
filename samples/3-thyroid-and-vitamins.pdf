@@ -1,0 +1,32 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 5 0 R >> >> /Contents 4 0 R >>
+endobj
+4 0 obj
+<< /Length 834 >>
+stream
+BT /F1 10 Tf 48 790 Td 15 TL (SAMPLE REPORT - FICTIONAL PATIENT, FOR TESTING ONLY) Tj T* () Tj T* (Namma Diagnostics, 4th Block, Jayanagar, Bengaluru 560011) Tj T* () Tj T* (Patient: Priya Shetty     Age/Sex: 29/F) Tj T* (Date: 15-Nov-2026     Ref. by: Dr. A. Kumar) Tj T* () Tj T* (Test                        Result    Unit       Reference Range) Tj T* (----------------------------------------------------------------) Tj T* (TSH                         2.1       uIU/mL     0.4 - 4.0) Tj T* (Free T4                     1.2       ng/dL      0.8 - 1.8) Tj T* (Vitamin D \(25-OH\)           18        ng/mL      30 - 100) Tj T* (Vitamin B12                 180       pg/mL      200 - 900) Tj T* (Haemoglobin                 12.6      g/dL       12.0 - 15.5) Tj T* (Serum Ferritin              14        ng/mL      15 - 150) Tj T* ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier >>
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000241 00000 n 
+0000001126 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+1194
+%%EOF

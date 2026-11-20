@@ -1,0 +1,32 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 5 0 R >> >> /Contents 4 0 R >>
+endobj
+4 0 obj
+<< /Length 839 >>
+stream
+BT /F1 10 Tf 48 790 Td 15 TL (SAMPLE REPORT - FICTIONAL PATIENT, FOR TESTING ONLY) Tj T* () Tj T* (Namma Diagnostics, 4th Block, Jayanagar, Bengaluru 560011) Tj T* () Tj T* (Patient: Arjun Nair     Age/Sex: 34/M) Tj T* (Date: 19-Nov-2026     Ref. by: Dr. A. Kumar) Tj T* () Tj T* (Test                        Result    Unit       Reference Range) Tj T* (----------------------------------------------------------------) Tj T* (Haemoglobin                 14.1      g/dL       13.0 - 17.0) Tj T* (Total WBC Count             3200      cells/uL   4000 - 11000) Tj T* (Platelet Count              85000     cells/uL   150000 - 410000) Tj T* (Haematocrit \(PCV\)           47        %          40 - 50) Tj T* (Dengue NS1 Antigen          Positive             Negative) Tj T* (SGPT \(ALT\)                  68        U/L        7 - 56) Tj T* ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier >>
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000241 00000 n 
+0000001131 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+1199
+%%EOF
